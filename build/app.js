@@ -40,7 +40,6 @@ const md = require("markdown-it")({
 });
 const fetchGitHubData_1 = require("./fetchGitHubData");
 const ossProjectRepos = ["gelbh"];
-const ossLearningMaterialRepos = [""];
 const githubUsername = "gelbh";
 const websiteUrl = "https://gelbhart.com";
 const linkedinUrl = "https://linkedin.com/in/tomer-gelbhart";
@@ -76,14 +75,6 @@ function generateMarkdown() {
   Here are some of my other projects you might want to check out that are not pinned:\n
   <br />\n<br />
   ${yield (0, fetchGitHubData_1.fetchGitHubData)(ossProjectRepos)}\n
-  </details>\n
-
-  <details>\n
-  <summary>OSS Learning Materials</summary>\n
-  <br />
-  Here are some of my unique-styled workshop materials you can use to learn key concepts at your own pace:\n
-  <br />\n<br />
-  ${yield (0, fetchGitHubData_1.fetchGitHubData)(ossLearningMaterialRepos)}\n
   </details>\n
 
   ---\n
