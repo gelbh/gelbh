@@ -1,5 +1,5 @@
 export async function fetchGitHubData(repos: Array<string>): Promise<string> {
-  const owner = "geblh";
+  const owner = "gelbh";
 
   const list = await Promise.all(
     repos.map(async (repo) => {
