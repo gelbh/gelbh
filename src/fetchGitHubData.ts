@@ -1,15 +1,11 @@
 export async function fetchGitHubData(repos: Array<string>): Promise<string> {
-  const owner = "gelbh";
+  const owner = "geblh";
 
   const list = await Promise.all(
     repos.map(async (repo) => {
-      const response = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}`
-      );
+      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
       if (!response.ok) {
-        throw new Error(
-          `"${owner}/${repo}" not found. Kindy review your list of repositories.`
-        );
+        throw new Error(`"${owner}/${repo}" not found. Kindy review your list of repositories.`);
       }
       const data = await response.json();
 
@@ -18,7 +14,7 @@ export async function fetchGitHubData(repos: Array<string>): Promise<string> {
         full_name: name,
         stargazers_count: stars,
         forks_count: forks,
-        description: desc,
+        description: desc
       } = data;
 
       return `<li><a href=${url} target="_blank" rel="noopener noreferrer">${name}</a> (<b>${stars}</b> ✨ and <b>${forks}</b> 🍴): ${desc}</li>`;
