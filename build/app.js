@@ -70,7 +70,7 @@ function generateMarkdown() {
   ## Highlights
 
   <details>\n
-  <summary>OSS Projects</summary>\n
+  <summary>Projects</summary>\n
   <br />
   Here are some of my other projects you might want to check out that are not pinned:\n
   <br />\n<br />
@@ -82,7 +82,7 @@ function generateMarkdown() {
   <a href="#">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a>\n
 
   <div align="center">\n
-   <a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.com/favicon.png" width="30" /></a>\n
+   <a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"></a>\n
   </div>`;
         const result = md.render(markdownText);
         fs.writeFile("README.md", result, (error) => {

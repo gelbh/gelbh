@@ -9,7 +9,7 @@
 <hr>
 <h2>Highlights</h2>
   <details>
-  <summary>OSS Projects</summary>
+  <summary>Projects</summary>
   <br />
   Here are some of my other projects you might want to check out that are not pinned:
   <br />
@@ -21,5 +21,5 @@
 <hr>
 <p><a href="#">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a></p>
   <div align="center">
-<p><a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.com/favicon.png" width="30" /></a></p>
+<p><a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"></a></p>
   </div>
