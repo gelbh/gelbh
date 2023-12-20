@@ -24,7 +24,7 @@ jobs:
         run: |-
           git add .
           git diff
-          git config --global user.email "mailtobolaji+actionsbot@gmail.com"
-          git config --global user.name "BA Actions Bot"
+          git config --global user.email "gelbharttomer@gmail.com"
+          git config --global user.name "gelbh"
           git commit -m "docs: auto-update README.md" -a || exit 0
           git push
