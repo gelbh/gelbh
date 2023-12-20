@@ -53,7 +53,7 @@ async function generateMarkdown() {
   <a href="https://blog.bolajiayodeji.com/how-to-create-an-automated-profile-readme-using-nodejs-and-github-actions?utm_source=github-profile">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a>\n
 
   <div align="center">\n
-   <a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"></a>\n
+   <a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.com/assets/favicon-ef528096f445e659e5b28fb50ea1d265a501e6d3c51027e9fe87cafaed475249.ico" width="30" /></a>\n
   </div>`;
 
   const result = md.render(markdownText);
