@@ -15,7 +15,7 @@
   <br />
 <br />
   <ul><li><a href=https://github.com/gelbh/gelbh target="_blank" rel="noopener noreferrer">gelbh/gelbh</a> (<b>0</b> ✨ and <b>0</b> 🍴): null</li>
-<li>More coming soon :).</li>
+<li>More coming soon :)</li>
 </ul>
   </details>
 <hr>
