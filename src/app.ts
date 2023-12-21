@@ -7,7 +7,7 @@ const md = require("markdown-it")({
 import { fetchRssData } from "./fetchRssData";
 import { fetchGitHubData } from "./fetchGitHubData";
 
-const ossProjectRepos = ["gelbh"];
+const ossProjectRepos = ["gelbh","eldan-molecular-imaging","gelbhart-innovations"];
 
 const githubUsername = "gelbh";
 const websiteUrl = "https://gelbhart.com";
