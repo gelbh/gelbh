@@ -13,7 +13,8 @@
     "fs": "^0.0.1-security",
     "markdown-it": "^14.0.0",
     "rss-parser": "^3.13.0",
-    "tsc-watch": "^6.0.4"
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@types/node": "^20.10.5"

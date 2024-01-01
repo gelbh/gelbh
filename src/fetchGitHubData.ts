@@ -21,20 +21,19 @@ export async function fetchGitHubData(repos: Array<string>): Promise<string> {
         description: desc,
       } = data;
 
-      let starsAndForksDisplay = "";
-      if (stars > 0) {
-        starsAndForksDisplay += `<b>${stars}</b> ✨`;
-      }
-      if (forks > 0) {
-        starsAndForksDisplay += starsAndForksDisplay
-          ? ` and <b>${forks}</b> 🍴`
-          : `<b>${forks}</b> 🍴`;
-      }
-      starsAndForksDisplay = starsAndForksDisplay
-        ? ` (${starsAndForksDisplay})`
-        : "";
+      let starsDisplay = stars > 0 ? `<b>${stars}</b> ✨` : "";
+      let forksDisplay = forks > 0 ? `<b>${forks}</b> 🍴` : "";
 
-      return `<li><a href=${url} target="_blank" rel="noopener noreferrer">${name}</a>${starsAndForksDisplay}: ${desc}</li>`;
+      let repoDetails =
+        starsDisplay || forksDisplay
+          ? ` (${starsDisplay}${
+              forksDisplay ? (starsDisplay ? " and " : "") + forksDisplay : ""
+            })`
+          : "";
+
+      const descriptionDisplay = desc ? `: ${desc}` : "";
+
+      return `<li><a href=${url} target="_blank" rel="noopener noreferrer">${name}</a>${repoDetails}${descriptionDisplay}</li>`;
     })
   );
 
