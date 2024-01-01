@@ -15,6 +15,7 @@
   <br />
 <br />
   <ul><li><a href=https://github.com/gelbh/gelbh target="_blank" rel="noopener noreferrer">gelbh/gelbh</a>: My automated GitHub README Profile built using Nodejs, TypeScript, and GitHub Actions.</li><li><a href=https://github.com/gelbh/eldan-molecular-imaging target="_blank" rel="noopener noreferrer">gelbh/eldan-molecular-imaging</a></li><li><a href=https://github.com/gelbh/gelbhart-innovations target="_blank" rel="noopener noreferrer">gelbh/gelbhart-innovations</a>: This repository powers gelbhart.com, a website crafted with Ruby on Rails. It combines CSS, JavaScript, and HTML for a sleek, user-friendly interface. </li>
+  <ul><li><a href=https://github.com/gelbh/gelbh target="_blank" rel="noopener noreferrer">gelbh/gelbh</a>: My automated GitHub README Profile built using Nodejs, TypeScript, and GitHub Actions.</li><li><a href=https://github.com/gelbh/eldan-molecular-imaging target="_blank" rel="noopener noreferrer">gelbh/eldan-molecular-imaging</a>: null</li><li><a href=https://github.com/gelbh/gelbhart-innovations target="_blank" rel="noopener noreferrer">gelbh/gelbhart-innovations</a>: This repository powers gelbhart.com, a website crafted with Ruby on Rails. It combines CSS, JavaScript, and HTML for a sleek, user-friendly interface. </li>
 <li>More coming soon :).</li>
 </ul>
   </details>
