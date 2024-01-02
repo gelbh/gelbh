@@ -21,5 +21,5 @@
 <hr>
 <p><a href="https://blog.bolajiayodeji.com/how-to-create-an-automated-profile-readme-using-nodejs-and-github-actions?utm_source=github-profile">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a></p>
   <div align="center">
-<p><a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.com/logo.png" width="30" /></a></p>
+<p><a href="https://gelbhart.com" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.com/favicon.png" width="30" /></a></p>
   </div>
