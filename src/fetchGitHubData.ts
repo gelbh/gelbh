@@ -37,5 +37,5 @@ export async function fetchGitHubData(repos: Array<string>): Promise<string> {
     })
   );
 
-  return `<ul>${list.join("")}\n<li>More coming soon :).</li>\n</ul>`;
+  return `<ul>${list.join("")}\n</ul>`;
 }

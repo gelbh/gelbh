@@ -10,7 +10,7 @@ import { fetchGitHubData } from "./fetchGitHubData";
 const ossProjectRepos = [
   "gelbh",
   "hevy-tracker",
-  "eldan-molecular-imaging",
+  "gelbhart-dev",
   "gelbhart-innovations",
 ];
 
@@ -43,7 +43,7 @@ async function generateMarkdown() {
 
   ---\n
 
-  ## Highlights
+  <! -- ## Highlights
 
   <details>\n
   <summary>Projects</summary>\n
@@ -53,7 +53,7 @@ async function generateMarkdown() {
   ${await fetchGitHubData(ossProjectRepos)}\n
   </details>\n
 
-  ---\n
+  ---\n -->
 
   <a href="https://blog.bolajiayodeji.com/how-to-create-an-automated-profile-readme-using-nodejs-and-github-actions?utm_source=github-profile">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a>\n
 
