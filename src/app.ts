@@ -32,7 +32,7 @@ async function generateMarkdown() {
 
   ---\n
 
-  Hi there 👋🏾!\n
+  Hi there👋!\n
 
   ---\n
 
