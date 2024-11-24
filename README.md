@@ -7,7 +7,7 @@
 <p><a href="https://github.com/gelbh/gelbh#gh-light-mode-only"><img src="https://github-readme-stats.vercel.app/api?username=gelbh&amp;show_icons=true&amp;hide_border=true&amp;include_all_commits=true&amp;card_width=600&amp;custom_title=GitHub%20Open%20Source%20Stats&amp;title_color=3B7EBF&amp;text_color=474A4E&amp;icon_color=3B7EBF&amp;hide=contribs&amp;show=reviews,prs_merged,prs_merged_percentage&amp;theme=transparent#gh-light-mode-only" alt="GitHub-Stats-Card-Light"></a></p>
   </div>
 <hr>
-  <!--
+  <!---
   ## Highlights
 
   <details>
