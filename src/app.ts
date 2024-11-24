@@ -43,20 +43,6 @@ async function generateMarkdown() {
 
   ---\n
 
-  <!---
-  ## Highlights
-
-  <details>\n
-  <summary>Projects</summary>\n
-  <br />
-  Here are some of my other projects you might want to check out that are not pinned:\n
-  <br />\n<br />
-  ${await fetchGitHubData(ossProjectRepos)}\n
-  </details>\n
-
-  -->
-  ---\n
-
   <a href="https://blog.bolajiayodeji.com/how-to-create-an-automated-profile-readme-using-nodejs-and-github-actions?utm_source=github-profile">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a>\n
 
   <div align="center">\n
