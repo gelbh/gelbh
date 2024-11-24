@@ -43,7 +43,7 @@ async function generateMarkdown() {
 
   ---\n
 
-  <!--
+  <!---
   ## Highlights
 
   <details>\n
