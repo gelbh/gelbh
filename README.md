@@ -7,18 +7,18 @@
 <p><a href="https://github.com/gelbh/gelbh#gh-light-mode-only"><img src="https://github-readme-stats.vercel.app/api?username=gelbh&amp;show_icons=true&amp;hide_border=true&amp;include_all_commits=true&amp;card_width=600&amp;custom_title=GitHub%20Open%20Source%20Stats&amp;title_color=3B7EBF&amp;text_color=474A4E&amp;icon_color=3B7EBF&amp;hide=contribs&amp;show=reviews,prs_merged,prs_merged_percentage&amp;theme=transparent#gh-light-mode-only" alt="GitHub-Stats-Card-Light"></a></p>
   </div>
 <hr>
-<h2>Highlights</h2>
+<p>&lt;! -- ## Highlights</p>
   <details>
   <summary>Projects</summary>
   <br />
   Here are some of my other projects you might want to check out that are not pinned:
   <br />
 <br />
-  <ul><li><a href=https://github.com/gelbh/gelbh target="_blank" rel="noopener noreferrer">gelbh/gelbh</a>: My automated GitHub README Profile built using Nodejs, TypeScript, and GitHub Actions.</li><li><a href=https://github.com/gelbh/hevy-tracker target="_blank" rel="noopener noreferrer">gelbh/hevy-tracker</a>: A Google Sheets Add-on for advanced workout analytics and tracking using the Hevy API. Automatically sync workouts, exercises, and progress data for deeper analysis.</li><li><a href=https://github.com/Eldan2024/eldan-molecular-imaging target="_blank" rel="noopener noreferrer">Eldan2024/eldan-molecular-imaging</a></li><li><a href=https://github.com/gelbh/gelbhart-innovations target="_blank" rel="noopener noreferrer">gelbh/gelbhart-innovations</a>: This repository powers gelbhart.com, a website crafted with Ruby on Rails. It combines CSS, JavaScript, and HTML for a sleek, user-friendly interface. </li>
-<li>More coming soon :).</li>
+  <ul><li><a href=https://github.com/gelbh/gelbh target="_blank" rel="noopener noreferrer">gelbh/gelbh</a>: My automated GitHub README Profile built using Nodejs, TypeScript, and GitHub Actions.</li><li><a href=https://github.com/gelbh/hevy-tracker target="_blank" rel="noopener noreferrer">gelbh/hevy-tracker</a>: A Google Sheets Add-on for advanced workout analytics and tracking using the Hevy API. Automatically sync workouts, exercises, and progress data for deeper analysis.</li><li><a href=https://github.com/gelbh/gelbhart-dev target="_blank" rel="noopener noreferrer">gelbh/gelbhart-dev</a></li><li><a href=https://github.com/gelbh/gelbhart-innovations target="_blank" rel="noopener noreferrer">gelbh/gelbhart-innovations</a>: This repository powers gelbhart.com, a website crafted with Ruby on Rails. It combines CSS, JavaScript, and HTML for a sleek, user-friendly interface. </li>
 </ul>
   </details>
 <hr>
+<p>--&gt;</p>
 <p><a href="https://blog.bolajiayodeji.com/how-to-create-an-automated-profile-readme-using-nodejs-and-github-actions?utm_source=github-profile">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a></p>
   <div align="center">
 <p><a href="https://gelbhart.dev" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.dev/favicon.ico" width="30" /></a></p>
