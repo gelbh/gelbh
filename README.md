@@ -4,10 +4,10 @@
 <p>Hi there 👋!</p>
 <hr>
 <a href="https://github.com/gelbh/gelbh#gh-dark-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&hide_border=true&include_all_commits=true&card_width=600&custom_title=GitHub%20Open%20Source%20Stats&title_color=3B7EBF&text_color=FFF&icon_color=3B7EBF&hide=contribs&show=reviews,prs_merged,prs_merged_percentage&theme=transparent#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
+      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&hide_border=true&custom_title=GitHub+Open+Source+Stats&hide=contribs%2Cissues%2Cprs%2Cstars&show_icons=true&include_all_commits=true&count_private=true&card_width=600&icon_color=3B7EBF&title_color=3B7EBF&text_color=FFF&theme=transparent#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
     </a>
 <a href="https://github.com/gelbh/gelbh#gh-light-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&hide_border=true&include_all_commits=true&card_width=600&custom_title=GitHub%20Open%20Source%20Stats&title_color=3B7EBF&text_color=474A4E&icon_color=3B7EBF&hide=contribs&show=reviews,prs_merged,prs_merged_percentage&theme=transparent#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
+      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&hide_border=true&custom_title=GitHub+Open+Source+Stats&hide=contribs%2Cissues%2Cprs%2Cstars&show_icons=true&include_all_commits=true&count_private=true&card_width=600&icon_color=3B7EBF&title_color=3B7EBF&text_color=474A4E&theme=transparent#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
     </a>
 </div>
 <hr>
