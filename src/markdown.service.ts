@@ -22,12 +22,46 @@ export class MarkdownService {
   }
 
   private generateGitHubStats(): string {
-    const darkMode = `<a href="https://github.com/${config.github.username}/${config.github.username}#gh-dark-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?username=${config.github.username}&show_icons=true&hide_border=true&include_all_commits=true&card_width=600&custom_title=GitHub%20Open%20Source%20Stats&title_color=${config.badges.colors.primary}&text_color=${config.badges.colors.textDark}&icon_color=${config.badges.colors.primary}&hide=contribs&show=reviews,prs_merged,prs_merged_percentage&theme=transparent#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
+    const baseParams = {
+      username: config.github.username,
+      hide_border: "true",
+      custom_title: "GitHub Open Source Stats",
+      hide: "contribs,issues,prs,stars",
+      show_icons: "true",
+      include_all_commits: "true",
+      count_private: "true",
+      card_width: "600",
+      icon_color: config.badges.colors.primary,
+    };
+
+    const getDarkModeParams = () => ({
+      ...baseParams,
+      title_color: config.badges.colors.primary,
+      text_color: config.badges.colors.textDark,
+      theme: "transparent",
+    });
+
+    const getLightModeParams = () => ({
+      ...baseParams,
+      title_color: config.badges.colors.primary,
+      text_color: config.badges.colors.textLight,
+      theme: "transparent",
+    });
+
+    const darkMode = `<a href="https://github.com/${config.github.username}/${
+      config.github.username
+    }#gh-dark-mode-only">
+      <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
+        getDarkModeParams()
+      ).toString()}#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
     </a>`;
 
-    const lightMode = `<a href="https://github.com/${config.github.username}/${config.github.username}#gh-light-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?username=${config.github.username}&show_icons=true&hide_border=true&include_all_commits=true&card_width=600&custom_title=GitHub%20Open%20Source%20Stats&title_color=${config.badges.colors.primary}&text_color=${config.badges.colors.textLight}&icon_color=${config.badges.colors.primary}&hide=contribs&show=reviews,prs_merged,prs_merged_percentage&theme=transparent#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
+    const lightMode = `<a href="https://github.com/${config.github.username}/${
+      config.github.username
+    }#gh-light-mode-only">
+      <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
+        getLightModeParams()
+      ).toString()}#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
     </a>`;
 
     return `${darkMode}\n${lightMode}`;
