@@ -3,12 +3,38 @@
 <hr>
 <p>Hi there 👋!</p>
 <hr>
-<a href="https://github.com/gelbh/gelbh#gh-dark-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&hide_border=true&custom_title=GitHub+Open+Source+Stats&hide=contribs%2Cissues%2Cprs%2Cstars&show_icons=true&include_all_commits=true&count_private=true&card_width=600&icon_color=3B7EBF&title_color=3B7EBF&text_color=FFF&theme=transparent#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
-    </a>
-<a href="https://github.com/gelbh/gelbh#gh-light-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&hide_border=true&custom_title=GitHub+Open+Source+Stats&hide=contribs%2Cissues%2Cprs%2Cstars&show_icons=true&include_all_commits=true&count_private=true&card_width=600&icon_color=3B7EBF&title_color=3B7EBF&text_color=474A4E&theme=transparent#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
-    </a>
+<pre><code>  &lt;a href=&quot;https://github.com/gelbh/gelbh#gh-dark-mode-only&quot;&gt;
+    &lt;img src=&quot;https://github-readme-stats.vercel.app/api?username=gelbh&amp;hide_border=true&amp;custom_title=GitHub+Open+Source+Stats&amp;hide=contribs%2Cissues%2Cprs%2Cstars&amp;show_icons=true&amp;include_all_commits=true&amp;count_private=true&amp;card_width=600&amp;icon_color=3B7EBF&amp;title_color=3B7EBF&amp;text_color=FFF&amp;theme=transparent#gh-dark-mode-only&quot; alt=&quot;GitHub Stats Dark Mode&quot;/&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;https://github.com/gelbh/gelbh#gh-light-mode-only&quot;&gt;
+    &lt;img src=&quot;https://github-readme-stats.vercel.app/api?username=gelbh&amp;hide_border=true&amp;custom_title=GitHub+Open+Source+Stats&amp;hide=contribs%2Cissues%2Cprs%2Cstars&amp;show_icons=true&amp;include_all_commits=true&amp;count_private=true&amp;card_width=600&amp;icon_color=3B7EBF&amp;title_color=3B7EBF&amp;text_color=474A4E&amp;theme=transparent#gh-light-mode-only&quot; alt=&quot;GitHub Stats Light Mode&quot;/&gt;
+  &lt;/a&gt;
+
+
+
+    &lt;h3&gt;Languages&lt;/h3&gt;
+    &lt;p&gt;
+      &lt;img src=&quot;https://img.shields.io/badge/-TypeScript-3B7EBF?style=flat&amp;logo=typescript&amp;logoColor=white&quot; alt=&quot;TypeScript&quot;/&gt; &lt;img src=&quot;https://img.shields.io/badge/-JavaScript-3B7EBF?style=flat&amp;logo=javascript&amp;logoColor=white&quot; alt=&quot;JavaScript&quot;/&gt; &lt;img src=&quot;https://img.shields.io/badge/-Python-3B7EBF?style=flat&amp;logo=python&amp;logoColor=white&quot; alt=&quot;Python&quot;/&gt;
+    &lt;/p&gt;
+  
+
+    &lt;h3&gt;Frameworks&lt;/h3&gt;
+    &lt;p&gt;
+      &lt;img src=&quot;https://img.shields.io/badge/-React-3B7EBF?style=flat&amp;logo=react&amp;logoColor=white&quot; alt=&quot;React&quot;/&gt; &lt;img src=&quot;https://img.shields.io/badge/-Node.js-3B7EBF?style=flat&amp;logo=node.js&amp;logoColor=white&quot; alt=&quot;Node.js&quot;/&gt; &lt;img src=&quot;https://img.shields.io/badge/-Express-3B7EBF?style=flat&amp;logo=express&amp;logoColor=white&quot; alt=&quot;Express&quot;/&gt;
+    &lt;/p&gt;
+  
+
+    &lt;h3&gt;Tools&lt;/h3&gt;
+    &lt;p&gt;
+      &lt;img src=&quot;https://img.shields.io/badge/-Docker-3B7EBF?style=flat&amp;logo=docker&amp;logoColor=white&quot; alt=&quot;Docker&quot;/&gt; &lt;img src=&quot;https://img.shields.io/badge/-Git-3B7EBF?style=flat&amp;logo=git&amp;logoColor=white&quot; alt=&quot;Git&quot;/&gt; &lt;img src=&quot;https://img.shields.io/badge/-AWS-3B7EBF?style=flat&amp;logo=aws&amp;logoColor=white&quot; alt=&quot;AWS&quot;/&gt;
+    &lt;/p&gt;
+  
+
+
+  &lt;img src=&quot;https://github-readme-streak-stats.herokuapp.com/?user=gelbh&amp;theme=transparent&amp;hide_border=true&quot; alt=&quot;GitHub streak&quot;/&gt;
+
+    &lt;img src=&quot;https://github-readme-stats.vercel.app/api/wakatime?username=gelbh&amp;layout=compact&quot; alt=&quot;WakaTime stats&quot;/&gt;
+</code></pre>
 </div>
 <hr>
 <h2>Open Source Projects</h2>
