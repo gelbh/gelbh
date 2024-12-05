@@ -87,17 +87,23 @@ export class MarkdownService {
   }
 
   private generateCodingStats(): string {
-    const stats = [
-      `
-      <img src="https://github-readme-streak-stats.herokuapp.com/?user=${config.github.username}&theme=transparent&hide_border=true" alt="GitHub streak"/>`,
-    ];
-
-    if (config.github.wakatime_username) {
-      stats.push(`
-        <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${config.github.wakatime_username}&layout=compact" alt="WakaTime stats"/>`);
-    }
-
-    return stats.join("\n");
+    return `<p align="center">
+    <picture>
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=${
+        config.github.username
+      }&theme=transparent&hide_border=true&card_width=600" alt="GitHub streak"/>
+    </picture>
+  </p>
+  ${
+    config.github.wakatime_username
+      ? `
+  <p align="center">
+    <picture>
+      <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${config.github.wakatime_username}&layout=compact&theme=transparent&hide_border=true&card_width=600" alt="WakaTime stats"/>
+    </picture>
+  </p>`
+      : ""
+  }`;
   }
 
   async generateReadme(reposList: string): Promise<string> {
