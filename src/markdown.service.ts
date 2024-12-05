@@ -9,6 +9,7 @@ export class MarkdownService {
       html: true,
       breaks: true,
       linkify: true,
+      xhtmlOut: false,
     });
   }
 
@@ -47,42 +48,42 @@ export class MarkdownService {
       theme: "transparent",
     });
 
-    return `
-      <a href="https://github.com/${config.github.username}/${
+    return `<p align="center">
+<a href="https://github.com/${config.github.username}/${
       config.github.username
     }#gh-dark-mode-only">
-        <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
-          getDarkModeParams()
-        ).toString()}#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
-      </a>
-      <a href="https://github.com/${config.github.username}/${
+  <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
+    getDarkModeParams()
+  ).toString()}#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
+</a>
+<a href="https://github.com/${config.github.username}/${
       config.github.username
     }#gh-light-mode-only">
-        <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
-          getLightModeParams()
-        ).toString()}#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
-      </a>
-    `;
+  <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
+    getLightModeParams()
+  ).toString()}#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
+</a>
+</p>`;
   }
 
   private generateTechStack(): string {
     return Object.entries(config.skills)
       .map(
         ([category, items]) => `
-        <h3>${category.charAt(0).toUpperCase() + category.slice(1)}</h3>
-        <p>
-          ${items
-            .map(
-              (item) =>
-                `<img src="https://img.shields.io/badge/-${item}-${
-                  config.badges.colors.primary
-                }?style=flat&logo=${item.toLowerCase()}&logoColor=white" alt="${item}"/>`
-            )
-            .join(" ")}
-        </p>
-      `
+### ${category.charAt(0).toUpperCase() + category.slice(1)}
+
+<p align="center">
+  ${items
+    .map(
+      (item) =>
+        `<img src="https://img.shields.io/badge/-${item}-${
+          config.badges.colors.primary
+        }?style=flat&logo=${item.toLowerCase()}&logoColor=white" alt="${item}"/>`
+    )
+    .join(" ")}
+</p>`
       )
-      .join("\n");
+      .join("\n\n");
   }
 
   private generateCodingStats(): string {
@@ -100,7 +101,7 @@ export class MarkdownService {
   }
 
   async generateReadme(reposList: string): Promise<string> {
-    const template = `<div align="center">
+    const content = `<div align="center">
 
 ${this.generateBadges()}
 
@@ -133,6 +134,6 @@ ${reposList}
 </a>
 </div>`;
 
-    return this.md.render(template);
+    return content;
   }
 }
