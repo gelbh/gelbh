@@ -17,27 +17,6 @@ Hi there 👋!
 </a>
 </p>
 
-
-### Languages
-
-<p align="center">
-  <img src="https://img.shields.io/badge/-TypeScript-3B7EBF?style=flat&logo=typescript&logoColor=white" alt="TypeScript"/> <img src="https://img.shields.io/badge/-JavaScript-3B7EBF?style=flat&logo=javascript&logoColor=white" alt="JavaScript"/> <img src="https://img.shields.io/badge/-Python-3B7EBF?style=flat&logo=python&logoColor=white" alt="Python"/>
-</p>
-
-
-### Frameworks
-
-<p align="center">
-  <img src="https://img.shields.io/badge/-React-3B7EBF?style=flat&logo=react&logoColor=white" alt="React"/> <img src="https://img.shields.io/badge/-Node.js-3B7EBF?style=flat&logo=node.js&logoColor=white" alt="Node.js"/> <img src="https://img.shields.io/badge/-Express-3B7EBF?style=flat&logo=express&logoColor=white" alt="Express"/>
-</p>
-
-
-### Tools
-
-<p align="center">
-  <img src="https://img.shields.io/badge/-Docker-3B7EBF?style=flat&logo=docker&logoColor=white" alt="Docker"/> <img src="https://img.shields.io/badge/-Git-3B7EBF?style=flat&logo=git&logoColor=white" alt="Git"/> <img src="https://img.shields.io/badge/-AWS-3B7EBF?style=flat&logo=aws&logoColor=white" alt="AWS"/>
-</p>
-
 <p align="center">
     <picture>
       <img src="https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true&card_width=600" alt="GitHub streak"/>
