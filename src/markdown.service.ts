@@ -1,4 +1,3 @@
-// markdown.service.ts
 import MarkdownIt from "markdown-it";
 import { config } from "./config";
 
@@ -48,23 +47,56 @@ export class MarkdownService {
       theme: "transparent",
     });
 
-    const darkMode = `<a href="https://github.com/${config.github.username}/${
+    return `
+      <a href="https://github.com/${config.github.username}/${
       config.github.username
     }#gh-dark-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
-        getDarkModeParams()
-      ).toString()}#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
-    </a>`;
-
-    const lightMode = `<a href="https://github.com/${config.github.username}/${
+        <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
+          getDarkModeParams()
+        ).toString()}#gh-dark-mode-only" alt="GitHub Stats Dark Mode"/>
+      </a>
+      <a href="https://github.com/${config.github.username}/${
       config.github.username
     }#gh-light-mode-only">
-      <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
-        getLightModeParams()
-      ).toString()}#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
-    </a>`;
+        <img src="https://github-readme-stats.vercel.app/api?${new URLSearchParams(
+          getLightModeParams()
+        ).toString()}#gh-light-mode-only" alt="GitHub Stats Light Mode"/>
+      </a>
+    `;
+  }
 
-    return `${darkMode}\n${lightMode}`;
+  private generateTechStack(): string {
+    return Object.entries(config.skills)
+      .map(
+        ([category, items]) => `
+        <h3>${category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+        <p>
+          ${items
+            .map(
+              (item) =>
+                `<img src="https://img.shields.io/badge/-${item}-${
+                  config.badges.colors.primary
+                }?style=flat&logo=${item.toLowerCase()}&logoColor=white" alt="${item}"/>`
+            )
+            .join(" ")}
+        </p>
+      `
+      )
+      .join("\n");
+  }
+
+  private generateCodingStats(): string {
+    const stats = [
+      `
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=${config.github.username}&theme=transparent&hide_border=true" alt="GitHub streak"/>`,
+    ];
+
+    if (config.github.wakatime_username) {
+      stats.push(`
+        <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${config.github.wakatime_username}&layout=compact" alt="WakaTime stats"/>`);
+    }
+
+    return stats.join("\n");
   }
 
   async generateReadme(reposList: string): Promise<string> {
@@ -79,6 +111,10 @@ Hi there 👋!
 ---
 
 ${this.generateGitHubStats()}
+
+${this.generateTechStack()}
+
+${this.generateCodingStats()}
 
 </div>
 
