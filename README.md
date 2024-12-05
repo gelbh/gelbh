@@ -43,9 +43,7 @@
 <li><a href=https://github.com/gelbh/hevy-tracker target="_blank" rel="noopener noreferrer">
           gelbh/hevy-tracker</a>: A Google Sheets Add-on for advanced workout analytics and tracking using the Hevy API. Automatically sync workouts, exercises, and progress data for deeper analysis.</li>
 <li><a href=https://github.com/gelbh/gelbhart-dev target="_blank" rel="noopener noreferrer">
-          gelbh/gelbhart-dev</a></li>
-<li><a href=https://github.com/gelbh/gelbhart-innovations target="_blank" rel="noopener noreferrer">
-          gelbh/gelbhart-innovations</a>: This repository powers gelbhart.com, a website crafted with Ruby on Rails. It combines CSS, JavaScript, and HTML for a sleek, user-friendly interface. </li></ul>
+          gelbh/gelbhart-dev</a></li></ul>
 <hr>
 <div align="center">
 <a href="https://gelbhart.dev" target="_blank" rel="noopener noreferrer">
