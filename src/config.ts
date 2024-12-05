@@ -15,11 +15,11 @@ interface Config {
       textDark: string;
     };
   };
-  skills: {
-    languages: string[];
-    frameworks: string[];
-    tools: string[];
-  };
+  // skills: {
+  //   languages: string[];
+  //   frameworks: string[];
+  //   tools: string[];
+  // };
 }
 
 export const config: Config = {
@@ -39,9 +39,9 @@ export const config: Config = {
       textDark: "FFF",
     },
   },
-  skills: {
-    languages: ["TypeScript", "JavaScript", "Python"],
-    frameworks: ["React", "Node.js", "Express"],
-    tools: ["Docker", "Git", "AWS"],
-  },
+  // skills: {
+  //   languages: ["TypeScript", "JavaScript", "Python"],
+  //   frameworks: ["React", "Node.js", "Express"],
+  //   tools: ["Docker", "Git", "AWS"],
+  // },
 };

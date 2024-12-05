@@ -66,25 +66,25 @@ export class MarkdownService {
 </p>`;
   }
 
-  private generateTechStack(): string {
-    return Object.entries(config.skills)
-      .map(
-        ([category, items]) => `
-### ${category.charAt(0).toUpperCase() + category.slice(1)}
+  //   private generateTechStack(): string {
+  //     return Object.entries(config.skills)
+  //       .map(
+  //         ([category, items]) => `
+  // ### ${category.charAt(0).toUpperCase() + category.slice(1)}
 
-<p align="center">
-  ${items
-    .map(
-      (item) =>
-        `<img src="https://img.shields.io/badge/-${item}-${
-          config.badges.colors.primary
-        }?style=flat&logo=${item.toLowerCase()}&logoColor=white" alt="${item}"/>`
-    )
-    .join(" ")}
-</p>`
-      )
-      .join("\n\n");
-  }
+  // <p align="center">
+  //   ${items
+  //     .map(
+  //       (item) =>
+  //         `<img src="https://img.shields.io/badge/-${item}-${
+  //           config.badges.colors.primary
+  //         }?style=flat&logo=${item.toLowerCase()}&logoColor=white" alt="${item}"/>`
+  //     )
+  //     .join(" ")}
+  // </p>`
+  //       )
+  //       .join("\n\n");
+  //   }
 
   private generateCodingStats(): string {
     return `<p align="center">
@@ -118,8 +118,6 @@ Hi there 👋!
 ---
 
 ${this.generateGitHubStats()}
-
-${this.generateTechStack()}
 
 ${this.generateCodingStats()}
 
