@@ -1,13 +1,22 @@
 <div align="center">
-<p><a href="https://gelbhart.dev"><img src="https://img.shields.io/badge/-Website-3B7EBF?style=for-the-badge&amp;logo=amp&amp;logoColor=white" alt="Website Badge"></a> <a href="https://linkedin.com/in/tomer-gelbhart"><img src="https://img.shields.io/badge/-LinkedIn-3B7EBF?style=for-the-badge&amp;logo=Linkedin&amp;logoColor=white" alt="Linkedin Badge"></a> <img src="https://komarev.com/ghpvc/?username=gelbh&amp;style=for-the-badge" alt="Profile Views Count Badge"></p>
+  [![Website Badge](https://img.shields.io/badge/-Website-3B7EBF?style=for-the-badge&logo=amp&logoColor=white)](https://gelbhart.dev) [![LinkedIn Badge](https://img.shields.io/badge/-LinkedIn-3B7EBF?style=for-the-badge&logo=Linkedin&logoColor=white)](https://linkedin.com/in/tomer-gelbhart) ![Profile Views](https://komarev.com/ghpvc/?username=gelbh&style=for-the-badge)
+  ---
+  Hi there 👋!
+  ---
+  [![GitHub-Stats-Card-Dark](https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&hide_border=true&include_all_commits=true&card_width=600&custom_title=GitHub+Open+Source+Stats&title_color=3B7EBF&text_color=FFF&icon_color=3B7EBF&hide=contribs&show=reviews%2Cprs_merged%2Cprs_merged_percentage&theme=transparent#gh-dark-mode-only)](https://github.com/gelbh/gelbh#gh-dark-mode-only)
+[![GitHub-Stats-Card-Light](https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&hide_border=true&include_all_commits=true&card_width=600&custom_title=GitHub+Open+Source+Stats&title_color=3B7EBF&text_color=474A4E&icon_color=3B7EBF&hide=contribs&show=reviews%2Cprs_merged%2Cprs_merged_percentage&theme=transparent#gh-light-mode-only)](https://github.com/gelbh/gelbh#gh-light-mode-only)
+</div>
 <hr>
-<p>Hi there👋!</p>
+<h2>Open Source Projects</h2>
+<ul><li><a href=https://github.com/gelbh/gelbh target="_blank" rel="noopener noreferrer">
+          gelbh/gelbh</a>: My automated GitHub README Profile built using Nodejs, TypeScript, and GitHub Actions.</li>
+<li><a href=https://github.com/gelbh/hevy-tracker target="_blank" rel="noopener noreferrer">
+          gelbh/hevy-tracker</a>: A Google Sheets Add-on for advanced workout analytics and tracking using the Hevy API. Automatically sync workouts, exercises, and progress data for deeper analysis.</li>
+<li><a href=https://github.com/gelbh/gelbhart-dev target="_blank" rel="noopener noreferrer">
+          gelbh/gelbhart-dev</a></li>
+<li><a href=https://github.com/gelbh/gelbhart-innovations target="_blank" rel="noopener noreferrer">
+          gelbh/gelbhart-innovations</a>: This repository powers gelbhart.com, a website crafted with Ruby on Rails. It combines CSS, JavaScript, and HTML for a sleek, user-friendly interface. </li></ul>
 <hr>
-<p><a href="https://github.com/gelbh/gelbh#gh-dark-mode-only"><img src="https://github-readme-stats.vercel.app/api?username=gelbh&amp;show_icons=true&amp;hide_border=true&amp;include_all_commits=true&amp;card_width=600&amp;custom_title=GitHub%20Open%20Source%20Stats&amp;title_color=3B7EBF&amp;text_color=FFF&amp;icon_color=3B7EBF&amp;hide=contribs&amp;show=reviews,prs_merged,prs_merged_percentage&amp;theme=transparent#gh-dark-mode-only" alt="GitHub-Stats-Card-Dark"></a></p>
-<p><a href="https://github.com/gelbh/gelbh#gh-light-mode-only"><img src="https://github-readme-stats.vercel.app/api?username=gelbh&amp;show_icons=true&amp;hide_border=true&amp;include_all_commits=true&amp;card_width=600&amp;custom_title=GitHub%20Open%20Source%20Stats&amp;title_color=3B7EBF&amp;text_color=474A4E&amp;icon_color=3B7EBF&amp;hide=contribs&amp;show=reviews,prs_merged,prs_merged_percentage&amp;theme=transparent#gh-light-mode-only" alt="GitHub-Stats-Card-Light"></a></p>
-  </div>
-<hr>
-<p><a href="https://blog.bolajiayodeji.com/how-to-create-an-automated-profile-readme-using-nodejs-and-github-actions?utm_source=github-profile">Learn how this works.</a> <a href="https://github.com/gelbh/gelbh/actions/workflows/build.yml"><img src="https://github.com/gelbh/gelbh/actions/workflows/build.yml/badge.svg" align="right" alt="Rebuild README.md file"></a></p>
-  <div align="center">
-<p><a href="https://gelbhart.dev" target="_blank" rel="noopener noreferrer"><img src="https://gelbhart.dev/favicon.ico" width="30" /></a></p>
-  </div>
+<a href="https://gelbhart.dev" target="_blank" rel="noopener noreferrer">
+  <img src="https://gelbhart.dev/favicon.ico" width="30" align="center" />
+</a>
