@@ -25,7 +25,7 @@ interface Config {
 export const config: Config = {
   github: {
     username: "gelbh",
-    repos: ["gelbh", "hevy-tracker", "gelbhart-dev", "gelbhart-innovations"],
+    repos: ["gelbh", "hevy-tracker", "gelbhart-dev"],
     wakatime_username: "gelbh",
   },
   social: {
