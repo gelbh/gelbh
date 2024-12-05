@@ -38,10 +38,17 @@ Hi there 👋!
   <img src="https://img.shields.io/badge/-Docker-3B7EBF?style=flat&logo=docker&logoColor=white" alt="Docker"/> <img src="https://img.shields.io/badge/-Git-3B7EBF?style=flat&logo=git&logoColor=white" alt="Git"/> <img src="https://img.shields.io/badge/-AWS-3B7EBF?style=flat&logo=aws&logoColor=white" alt="AWS"/>
 </p>
 
-
-      <img src="https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true" alt="GitHub streak"/>
-
-        <img src="https://github-readme-stats.vercel.app/api/wakatime?username=gelbh&layout=compact" alt="WakaTime stats"/>
+<p align="center">
+    <picture>
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true&card_width=600" alt="GitHub streak"/>
+    </picture>
+  </p>
+  
+  <p align="center">
+    <picture>
+      <img src="https://github-readme-stats.vercel.app/api/wakatime?username=gelbh&layout=compact&theme=transparent&hide_border=true&card_width=600" alt="WakaTime stats"/>
+    </picture>
+  </p>
 
 </div>
 
