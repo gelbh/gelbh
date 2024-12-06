@@ -24,4 +24,6 @@
 
         <img src="https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true&card_width=600" alt="GitHub streak" />
 
+        ---
+
       </div>
