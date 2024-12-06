@@ -122,13 +122,13 @@ export class MarkdownService {
   }
 
   async generateReadme(reposList: string): Promise<string> {
-    const htmlContent = /*html*/`<div align="center">
-    ${ this.generateGitHubStats() }
-    <br/>
-    <br/>
-    ${ this.generateCodingStreak() }
-  </div>`;
-
-    return `${ htmlContent }`;
+    return /*html*/`
+      <div align="center">
+        ${ this.generateGitHubStats() }
+        <br/>
+        <br/>
+        ${ this.generateCodingStreak() }
+      </div>
+    `;
   }
 }
