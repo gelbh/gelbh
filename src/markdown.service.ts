@@ -102,6 +102,8 @@ export class MarkdownService {
 
         ${ this.generateCodingStreak() }
 
+        ---
+
       </div>`;
 
     return content;
