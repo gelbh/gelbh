@@ -6,12 +6,12 @@ export class GitHubService {
 
   static async fetchRepositoryData(repo: string): Promise<GitHubRepo> {
     const response = await fetch(
-      `${this.API_BASE}/${config.github.username}/${repo}`
+      `${ this.API_BASE }/${ config.github.username }/${ repo }`
     );
 
     if (!response.ok) {
       throw new Error(
-        `Repository "${config.github.username}/${repo}" not found`
+        `Repository "${ config.github.username }/${ repo }" not found`
       );
     }
 
@@ -20,9 +20,9 @@ export class GitHubService {
 
   static formatRepoStats(stars: number, forks: number): string {
     const stats = [];
-    if (stars > 0) stats.push(`<b>${stars}</b> ✨`);
-    if (forks > 0) stats.push(`<b>${forks}</b> 🍴`);
-    return stats.length ? ` (${stats.join(" and ")})` : "";
+    if (stars > 0) stats.push(`<b>${ stars }</b> ✨`);
+    if (forks > 0) stats.push(`<b>${ forks }</b> 🍴`);
+    return stats.length ? ` (${ stats.join(" and ") })` : "";
   }
 
   static async generateReposList(): Promise<string> {
@@ -33,13 +33,16 @@ export class GitHubService {
           data.stargazers_count,
           data.forks_count
         );
-        const description = data.description ? `: ${data.description}` : "";
+        const description = data.description ? `: ${ data.description }` : "";
 
-        return `<li><a href=${data.html_url} target="_blank" rel="noopener noreferrer">
-          ${data.full_name}</a>${stats}${description}</li>`;
+        return /*html*/`
+          <li><a href=${ data.html_url } target="_blank" rel="noopener noreferrer">${ data.full_name }</a>${ stats }${ description }</li>
+          `;
       })
     );
 
-    return `<ul>${repos.join("\n")}</ul>`;
+    return /*html*/`
+      <ul>${ repos.join("\n") }</ul>
+    `;
   }
 }
