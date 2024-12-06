@@ -51,6 +51,7 @@ export class MarkdownService {
     </a>
     <br />
     <br />
+    <br />
     <a href="https://github.com/${config.github.username}">
       <img src="https://github-readme-stats.vercel.app/api/top-langs/?${languageParams}" />
     </a>
@@ -88,7 +89,8 @@ export class MarkdownService {
     const content = `<div align="center">
 
 ${this.generateGitHubStats()}
-
+<br/>
+<br/>
 ${this.generateCodingStreak()}
 
 </div>`;
