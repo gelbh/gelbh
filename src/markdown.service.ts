@@ -37,15 +37,15 @@ export class MarkdownService {
       card_width: "495",
     }).toString();
 
-    return `
-# ${ config.github.username }'s GitHub Profile
+    return `<div align="center">
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?${ activityStats })
 
 ![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?${ languageParams })
 
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=${ config.github.username }&theme=transparent&hide_border=true&card_width=600)
-`;
+
+</div>`;
   }
 
   async generateReadme(reposList: string): Promise<string> {
