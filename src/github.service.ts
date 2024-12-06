@@ -35,14 +35,11 @@ export class GitHubService {
         );
         const description = data.description ? `: ${ data.description }` : "";
 
-        return /*html*/`
-          <li><a href=${ data.html_url } target="_blank" rel="noopener noreferrer">${ data.full_name }</a>${ stats }${ description }</li>
-          `;
+        return `<li><a href=${ data.html_url } target="_blank" rel="noopener noreferrer">
+          ${ data.full_name }</a>${ stats }${ description }</li>`;
       })
     );
 
-    return /*html*/`
-      <ul>${ repos.join("\n") }</ul>
-    `;
+    return `<ul>${ repos.join("\n") }</ul>`;
   }
 }
