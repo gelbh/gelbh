@@ -8,9 +8,7 @@ async function main() {
     const reposList = await GitHubService.generateReposList();
     const readme = await markdownService.generateReadme(reposList);
 
-    const readmeContent = `<!-- Profile README -->\n${ readme }\n<!-- End README -->`;
-
-    await writeFile("README.md", readmeContent);
+    await writeFile("README.md", readme);
     console.log("✅ README.md generated successfully");
   } catch (error) {
     console.error("Failed to generate README:", error);
