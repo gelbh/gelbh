@@ -1,6 +1,6 @@
-
-      <div align="center">
-        
+<!-- Profile README -->
+<div align="center">
+    
       <div>
         <a href="https://github.com/gelbh">
           <img 
@@ -18,13 +18,13 @@
         </a>
       </div>
     
-        <br/>
-        <br/>
-        
+    <br/>
+    <br/>
+    
       <img 
         src="https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true&card_width=600" 
         alt="GitHub streak" 
       />
     
-      </div>
-    
+  </div>
+<!-- End README -->
