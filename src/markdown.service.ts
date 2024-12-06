@@ -33,7 +33,7 @@ export class MarkdownService {
 
     const activityStats = new URLSearchParams({
       ...baseParams,
-      theme: "catppuccin_mocha",
+      theme: "transparent",
       custom_title: "GitHub Activity",
     }).toString();
 
@@ -87,13 +87,11 @@ export class MarkdownService {
   async generateReadme(reposList: string): Promise<string> {
     const content = `<div align="center">
 
-${this.generateBadges()}
-
 ${this.generateGitHubStats()}
 
 ${this.generateCodingStreak()}
 
-${this.generateFooter()}</div>`;
+</div>`;
 
     return content;
   }
