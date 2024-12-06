@@ -1,7 +1,12 @@
 <!-- Profile README -->
+<<<<<<< HEAD
 
       <div align="center">
         
+=======
+<div align="center">
+    
+>>>>>>> e8c9ac8dd12ae0799d494396fe2b31c489d083f5
       <div>
         <a href="https://github.com/gelbh">
           <img 
@@ -19,14 +24,18 @@
         </a>
       </div>
     
-        <br/>
-        <br/>
-        
+    <br/>
+    <br/>
+    
       <img 
         src="https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true&card_width=600" 
         alt="GitHub streak" 
       />
     
+<<<<<<< HEAD
       </div>
     
+=======
+  </div>
+>>>>>>> e8c9ac8dd12ae0799d494396fe2b31c489d083f5
 <!-- End README -->
