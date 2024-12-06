@@ -33,7 +33,7 @@ export class MarkdownService {
 
     const activityStats = new URLSearchParams({
       ...baseParams,
-      theme: "catppuccin_latte",
+      theme: "catppuccin_mocha",
       custom_title: "GitHub Activity",
     }).toString();
 
@@ -42,14 +42,19 @@ export class MarkdownService {
       theme: "transparent",
       layout: "compact",
       langs_count: "6",
+      card_width: "495",
     }).toString();
 
-    return `<a href="https://github.com/${config.github.username}">
-  <img src="https://github-readme-stats.vercel.app/api?${activityStats}" height="180" />
-</a>
-<a href="https://github.com/${config.github.username}">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?${languageParams}" height="180" />
-</a>`;
+    return `<div>
+    <a href="https://github.com/${config.github.username}">
+      <img src="https://github-readme-stats.vercel.app/api?${activityStats}" height="180" />
+    </a>
+    <br />
+    <br />
+    <a href="https://github.com/${config.github.username}">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?${languageParams}" />
+    </a>
+  </div>`;
   }
 
   private generateCodingStreak(): string {
