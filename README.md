@@ -10,6 +10,6 @@
 <br />
 <br />
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=gelbh&theme=transparent&hide_border=true&card_width=600)
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=gelbh&theme=transparent)](https://git.io/streak-stats)
 
 </div>
