@@ -69,7 +69,7 @@ jobs:
             await page.setContent(html);
             
             // Wait for images to load
-            await page.waitForTimeout(3000);
+            await new Promise(resolve => setTimeout(resolve, 3000));
             
             // Take screenshot
             await page.screenshot({ 
