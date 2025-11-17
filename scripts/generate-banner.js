@@ -163,27 +163,18 @@ async function renderSvgToPng(svgContent, outputPath) {
     // Wait for SVG to be fully rendered
     await page.waitForSelector('svg', { visible: true, timeout: 5000 });
     
-    // Additional wait for any embedded images to load
+    // Wait for embedded image element and its content
+    await page.waitForSelector('image[href^="data:"]', { 
+      visible: true, 
+      timeout: 5000 
+    });
+    
+    // Wait for CSS animations to complete (GitHub stats has animations up to 1050ms)
+    console.log('Waiting for animations to complete...');
     await page.evaluate(() => {
       return new Promise((resolve) => {
-        const images = document.querySelectorAll('image');
-        if (images.length === 0) {
-          resolve();
-          return;
-        }
-        
-        let loadedCount = 0;
-        images.forEach((img) => {
-          if (img.href.baseVal) {
-            loadedCount++;
-            if (loadedCount === images.length) {
-              resolve();
-            }
-          }
-        });
-        
-        // Fallback timeout
-        setTimeout(resolve, 2000);
+        // Wait for the longest animation (1050ms) plus buffer
+        setTimeout(resolve, 1500);
       });
     });
 
