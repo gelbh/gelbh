@@ -2,38 +2,38 @@ name: Update Banner with Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Run daily at midnight UTC
-  workflow_dispatch:  # Allow manual trigger
+    - cron: "0 0 * * *" # Run daily at midnight UTC
+  workflow_dispatch: # Allow manual trigger
   push:
     branches:
       - main
     paths:
-      - 'banner-with-stats.svg'
+      - "banner-with-stats.svg"
 
 jobs:
   update-banner:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          
+          node-version: "20"
+
       - name: Install dependencies
         run: |
           npm install -g puppeteer
           npm install puppeteer
-          
+
       - name: Generate composite banner
         run: |
           node << 'EOF'
           const puppeteer = require('puppeteer');
           const fs = require('fs');
-          
+
           (async () => {
             const browser = await puppeteer.launch({
               args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -81,7 +81,7 @@ jobs:
             console.log('Banner generated successfully!');
           })();
           EOF
-          
+
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
