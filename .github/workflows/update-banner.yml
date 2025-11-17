@@ -25,80 +25,66 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install puppeteer gifencoder canvas pngjs
+          npm install puppeteer axios
 
       - name: Generate composite banner
         run: |
           node << 'EOF'
           const puppeteer = require('puppeteer');
+          const axios = require('axios');
           const fs = require('fs');
-          const GIFEncoder = require('gifencoder');
-          const { createCanvas, loadImage } = require('canvas');
-          const { PNG } = require('pngjs');
 
           (async () => {
+            // Read the base SVG
+            const baseSvg = fs.readFileSync('banner-with-stats.svg', 'utf-8');
+            
+            // Fetch the GitHub stats SVG
+            const statsUrl = 'https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1';
+            const statsResponse = await axios.get(statsUrl);
+            const statsSvg = statsResponse.data;
+            
+            // Parse stats SVG to get its dimensions
+            const statsWidthMatch = statsSvg.match(/width="(\d+)"/);
+            const statsHeightMatch = statsSvg.match(/height="(\d+)"/);
+            const statsWidth = statsWidthMatch ? parseInt(statsWidthMatch[1]) : 495;
+            const statsHeight = statsHeightMatch ? parseInt(statsHeightMatch[1]) : 195;
+            
+            // Create composite SVG by embedding stats as data URI
+            const statsBase64 = Buffer.from(statsSvg).toString('base64');
+            const statsDataUri = `data:image/svg+xml;base64,${statsBase64}`;
+            
+            // Modify the base SVG to replace the foreignObject with an image
+            const compositeSvg = baseSvg.replace(
+              /<foreignObject[^>]*>[\s\S]*?<\/foreignObject>/,
+              `<image x="325" y="420" width="${statsWidth}" height="${statsHeight}" href="${statsDataUri}"/>`
+            );
+            
+            // Save the composite SVG
+            fs.writeFileSync('banner-composite.svg', compositeSvg);
+            
+            // Convert to PNG using Puppeteer
             const browser = await puppeteer.launch({
               args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
             const page = await browser.newPage();
-            
-            // Set viewport to banner dimensions
             await page.setViewport({ width: 1200, height: 627 });
-            
-            // Create HTML with the banner and stats overlay
-            const html = `
+            await page.setContent(`
               <!DOCTYPE html>
               <html>
-              <head>
-                <style>
-                  body { margin: 0; padding: 0; overflow: hidden; background: transparent; }
-                  .container { position: relative; width: 1200px; height: 627px; }
-                  .banner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-                  .stats { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); }
-                </style>
-              </head>
-              <body>
-                <div class="container">
-                  <img class="banner" src="https://gelbhart.dev/assets/logos/source/logo_linkedin.svg" />
-                  <div class="stats">
-                    <img src="https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&t=${Date.now()}" />
-                  </div>
-                </div>
+              <body style="margin:0;padding:0;">
+                ${compositeSvg}
               </body>
               </html>
-            `;
+            `);
             
-            await page.setContent(html);
             await new Promise(resolve => setTimeout(resolve, 2000));
+            await page.screenshot({ 
+              path: 'banner-composite.png',
+              omitBackground: false
+            });
             
-            // Create GIF encoder
-            const encoder = new GIFEncoder(1200, 627);
-            const gifStream = fs.createWriteStream('banner-composite.gif');
-            encoder.createReadStream().pipe(gifStream);
-            
-            encoder.start();
-            encoder.setRepeat(0);
-            encoder.setDelay(100);
-            encoder.setQuality(10);
-            
-            // Capture frames
-            for (let i = 0; i < 30; i++) {
-              const screenshot = await page.screenshot({ type: 'png' });
-              const png = PNG.sync.read(screenshot);
-              const canvas = createCanvas(1200, 627);
-              const ctx = canvas.getContext('2d');
-              const imgData = ctx.createImageData(1200, 627);
-              imgData.data.set(png.data);
-              ctx.putImageData(imgData, 0, 0);
-              encoder.addFrame(ctx);
-              await new Promise(resolve => setTimeout(resolve, 100));
-            }
-            
-            encoder.finish();
-            
-            await new Promise(resolve => gifStream.on('finish', resolve));
             await browser.close();
-            console.log('Animated GIF banner generated successfully!');
+            console.log('Banner composite generated successfully!');
           })();
           EOF
 
@@ -106,5 +92,5 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add banner-composite.gif
+          git add banner-composite.png banner-composite.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update banner with latest stats" && git push)
