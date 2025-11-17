@@ -1,5 +1,7 @@
 <div align="center">
 
-![LinkedIn Banner](https://gelbhart.dev/assets/logos/source/logo_linkedin.svg)
+<a href="https://gelbhart.dev/">
+  <img src="https://gelbhart.dev/assets/logos/source/logo_linkedin.svg" width="700">
+</a>
 
 </div>
