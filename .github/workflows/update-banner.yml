@@ -1,0 +1,90 @@
+name: Update Banner with Stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
+  push:
+    branches:
+      - main
+    paths:
+      - 'banner-with-stats.svg'
+
+jobs:
+  update-banner:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          npm install -g puppeteer
+          npm install puppeteer
+          
+      - name: Generate composite banner
+        run: |
+          node << 'EOF'
+          const puppeteer = require('puppeteer');
+          const fs = require('fs');
+          
+          (async () => {
+            const browser = await puppeteer.launch({
+              args: ['--no-sandbox', '--disable-setuid-sandbox']
+            });
+            const page = await browser.newPage();
+            
+            // Set viewport to banner dimensions
+            await page.setViewport({ width: 1200, height: 627 });
+            
+            // Create HTML with the banner and stats overlay
+            const html = `
+              <!DOCTYPE html>
+              <html>
+              <head>
+                <style>
+                  body { margin: 0; padding: 0; overflow: hidden; }
+                  .container { position: relative; width: 1200px; height: 627px; }
+                  .banner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+                  .stats { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
+                </style>
+              </head>
+              <body>
+                <div class="container">
+                  <img class="banner" src="https://gelbhart.dev/assets/logos/source/logo_linkedin.svg" />
+                  <div class="stats">
+                    <img src="https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1" />
+                  </div>
+                </div>
+              </body>
+              </html>
+            `;
+            
+            await page.setContent(html);
+            
+            // Wait for images to load
+            await page.waitForTimeout(3000);
+            
+            // Take screenshot
+            await page.screenshot({ 
+              path: 'banner-composite.png',
+              fullPage: false
+            });
+            
+            await browser.close();
+            console.log('Banner generated successfully!');
+          })();
+          EOF
+          
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add banner-composite.png
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update banner with latest stats" && git push)
