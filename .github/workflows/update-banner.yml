@@ -39,7 +39,7 @@ jobs:
             const baseSvg = fs.readFileSync('banner-with-stats.svg', 'utf-8');
             
             // Fetch the GitHub stats SVG
-            const statsUrl = 'https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1';
+            const statsUrl = 'https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&hide_title=true';
             const statsResponse = await axios.get(statsUrl);
             const statsSvg = statsResponse.data;
             
