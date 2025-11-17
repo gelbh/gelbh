@@ -1,0 +1,7 @@
+node_modules/
+.npm/
+.cache/
+*.log
+npm-debug.log*
+.DS_Store
+banner-composite.svg

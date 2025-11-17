@@ -8,87 +8,82 @@ on:
     branches:
       - main
 
+# Prevent concurrent runs to avoid race conditions
+concurrency:
+  group: banner-update
+  cancel-in-progress: false
+
 jobs:
   update-banner:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Needed to detect file changes
+
+      - name: Check if banner source exists
+        run: |
+          if [ ! -f "banner-with-stats.svg" ]; then
+            echo "Error: banner-with-stats.svg not found!"
+            exit 1
+          fi
+          echo "✓ Source banner file found"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: 'npm'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.cache/puppeteer
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: |
-          npm install puppeteer axios
+        run: npm ci --prefer-offline --no-audit
 
       - name: Generate composite banner
+        run: npm run generate-banner
+        env:
+          NODE_ENV: production
+
+      - name: Check for changes
+        id: check_changes
         run: |
-          node << 'EOF'
-          const puppeteer = require('puppeteer');
-          const axios = require('axios');
-          const fs = require('fs');
+          git add -N banner-composite.png
+          if git diff --exit-code banner-composite.png > /dev/null 2>&1; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in banner"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in banner"
+          fi
 
-          (async () => {
-            // Read the base SVG
-            const baseSvg = fs.readFileSync('banner-with-stats.svg', 'utf-8');
-            
-            // Fetch the GitHub stats SVG
-            const statsUrl = 'https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&hide_title=true';
-            const statsResponse = await axios.get(statsUrl);
-            const statsSvg = statsResponse.data;
-            
-            // Parse stats SVG to get its dimensions
-            const statsWidthMatch = statsSvg.match(/width="(\d+)"/);
-            const statsHeightMatch = statsSvg.match(/height="(\d+)"/);
-            const statsWidth = statsWidthMatch ? parseInt(statsWidthMatch[1]) : 495;
-            const statsHeight = statsHeightMatch ? parseInt(statsHeightMatch[1]) : 195;
-            
-            // Create composite SVG by embedding stats as data URI
-            const statsBase64 = Buffer.from(statsSvg).toString('base64');
-            const statsDataUri = `data:image/svg+xml;base64,${statsBase64}`;
-            
-            // Modify the base SVG to replace the foreignObject with an image
-            const compositeSvg = baseSvg.replace(
-              /<foreignObject[^>]*>[\s\S]*?<\/foreignObject>/,
-              `<image x="325" y="420" width="${statsWidth}" height="${statsHeight}" href="${statsDataUri}"/>`
-            );
-            
-            // Save the composite SVG
-            fs.writeFileSync('banner-composite.svg', compositeSvg);
-            
-            // Convert to PNG using Puppeteer
-            const browser = await puppeteer.launch({
-              args: ['--no-sandbox', '--disable-setuid-sandbox']
-            });
-            const page = await browser.newPage();
-            await page.setViewport({ width: 1200, height: 627 });
-            await page.setContent(`
-              <!DOCTYPE html>
-              <html>
-              <body style="margin:0;padding:0;">
-                ${compositeSvg}
-              </body>
-              </html>
-            `);
-            
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            await page.screenshot({ 
-              path: 'banner-composite.png',
-              omitBackground: false
-            });
-            
-            await browser.close();
-            console.log('Banner composite generated successfully!');
-          })();
-          EOF
-
-      - name: Commit and push if changed
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add banner-composite.png
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update banner with latest stats" && git push)
+          git commit -m "chore: update banner with latest stats [skip ci]"
+          git push
+
+      - name: Upload artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-artifacts
+          path: |
+            banner-composite.svg
+            banner-composite.png
+          if-no-files-found: ignore
+          retention-days: 7

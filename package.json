@@ -1,0 +1,20 @@
+{
+  "name": "github-banner-generator",
+  "version": "1.0.0",
+  "description": "Automated GitHub profile banner generator with stats",
+  "main": "scripts/generate-banner.js",
+  "scripts": {
+    "generate-banner": "node scripts/generate-banner.js"
+  },
+  "keywords": [
+    "github",
+    "banner",
+    "stats"
+  ],
+  "author": "gelbh",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "puppeteer": "^24.30.0"
+  }
+}
