@@ -9,8 +9,10 @@ const CONFIG = {
   INPUT_SVG: 'banner-with-stats.svg',
   OUTPUT_SVG: 'banner-composite.svg',
   OUTPUT_PNG: 'banner-composite.png',
-  MAX_RETRIES: 3,
+  STATS_CACHE_FILE: 'stats-cache.svg',
+  MAX_RETRIES: 6,
   INITIAL_RETRY_DELAY: 1000,
+  INITIAL_503_RETRY_DELAY: 5000,
   REQUEST_TIMEOUT: 10000,
   VIEWPORT: { width: 1200, height: 627 },
   STATS_POSITION: { x: 325, y: 420 },
@@ -34,6 +36,42 @@ async function fileExists(filePath) {
   } catch {
     return false;
   }
+}
+
+/**
+ * Gets cached stats SVG if available
+ */
+async function getCachedStats() {
+  if (await fileExists(CONFIG.STATS_CACHE_FILE)) {
+    try {
+      const cachedStats = await fs.readFile(CONFIG.STATS_CACHE_FILE, 'utf-8');
+      console.log('✓ Found cached stats file');
+      return cachedStats;
+    } catch (error) {
+      console.warn(`⚠ Failed to read cache file: ${error.message}`);
+      return null;
+    }
+  }
+  return null;
+}
+
+/**
+ * Saves stats SVG to cache
+ */
+async function saveStatsCache(statsSvg) {
+  try {
+    await fs.writeFile(CONFIG.STATS_CACHE_FILE, statsSvg, 'utf-8');
+    console.log(`✓ Stats cached to ${CONFIG.STATS_CACHE_FILE}`);
+  } catch (error) {
+    console.warn(`⚠ Failed to save cache: ${error.message}`);
+  }
+}
+
+/**
+ * Generates a random jitter value between 0 and maxJitter
+ */
+function getJitter(maxJitter) {
+  return Math.floor(Math.random() * maxJitter);
 }
 
 /**
@@ -62,14 +100,29 @@ async function fetchStatsWithRetry(url, retries = CONFIG.MAX_RETRIES) {
       
     } catch (error) {
       lastError = error;
+      const statusCode = error.response?.status;
       
-      // Handle rate limiting
-      if (error.response?.status === 429) {
+      // Handle 503 Service Unavailable with longer delays
+      if (statusCode === 503) {
+        const baseDelay = CONFIG.INITIAL_503_RETRY_DELAY * Math.pow(2, attempt - 1);
+        const jitter = getJitter(1000); // Add up to 1s jitter
+        const waitTime = baseDelay + jitter;
+        console.warn(`⚠ Service unavailable (503). Waiting ${waitTime}ms before retry...`);
+        if (attempt < retries) {
+          await sleep(waitTime);
+          continue;
+        }
+      }
+      
+      // Handle rate limiting (429)
+      if (statusCode === 429) {
         const retryAfter = error.response.headers['retry-after'];
         const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : CONFIG.INITIAL_RETRY_DELAY * Math.pow(2, attempt);
         console.warn(`⚠ Rate limited. Waiting ${waitTime}ms before retry...`);
-        await sleep(waitTime);
-        continue;
+        if (attempt < retries) {
+          await sleep(waitTime);
+          continue;
+        }
       }
 
       // Handle timeout
@@ -81,8 +134,10 @@ async function fetchStatsWithRetry(url, retries = CONFIG.MAX_RETRIES) {
 
       if (attempt < retries) {
         const backoffDelay = CONFIG.INITIAL_RETRY_DELAY * Math.pow(2, attempt - 1);
-        console.log(`Retrying in ${backoffDelay}ms...`);
-        await sleep(backoffDelay);
+        const jitter = getJitter(500); // Add up to 500ms jitter for other errors
+        const waitTime = backoffDelay + jitter;
+        console.log(`Retrying in ${waitTime}ms...`);
+        await sleep(waitTime);
       }
     }
   }
@@ -227,9 +282,26 @@ async function main() {
     const baseSvg = await fs.readFile(CONFIG.INPUT_SVG, 'utf-8');
     console.log('✓ Base SVG loaded');
 
-    // Fetch GitHub stats with retry logic
+    // Fetch GitHub stats with retry logic and fallback
     console.log('\nFetching GitHub stats...');
-    const statsSvg = await fetchStatsWithRetry(CONFIG.STATS_API_URL);
+    let statsSvg;
+    
+    try {
+      statsSvg = await fetchStatsWithRetry(CONFIG.STATS_API_URL);
+      // Save successful fetch to cache
+      await saveStatsCache(statsSvg);
+    } catch (error) {
+      console.warn(`\n⚠ Failed to fetch stats from API: ${error.message}`);
+      console.log('Attempting to use cached stats...');
+      
+      const cachedStats = await getCachedStats();
+      if (cachedStats) {
+        console.log('✓ Using cached stats as fallback');
+        statsSvg = cachedStats;
+      } else {
+        throw new Error('API fetch failed and no cached stats available. Cannot generate banner.');
+      }
+    }
 
     // Create composite SVG
     console.log('\nCreating composite SVG...');
