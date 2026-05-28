@@ -45,10 +45,6 @@
   <!-- Subtle tagline -->
   <text fill="#9ca3af" font-family="'Courier New', Courier, monospace" font-size="28" font-weight="400" x="600" y="395" text-anchor="middle">Full-Stack Developer</text>
 
-  <!-- GitHub Stats Widget Embedded -->
-  <foreignObject x="325" y="430" width="550" height="180">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-      <img src="https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1" style="width: 100%; height: auto;"/>
-    </div>
-  </foreignObject>
+  <!-- Stats card placeholder (replaced at build time by generate-banner.js) -->
+  <foreignObject x="325" y="430" width="550" height="180"/>
 </svg>

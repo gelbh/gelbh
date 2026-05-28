@@ -17,6 +17,8 @@ jobs:
   update-banner:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -58,6 +60,14 @@ jobs:
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit
+
+      - name: Generate GitHub stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          path: stats-card.svg
+          options: username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&hide_title=true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate composite banner
         run: npm run generate-banner

@@ -5,7 +5,7 @@ const fsSync = require('fs');
 const path = require('path');
 
 const CONFIG = {
-  STATS_API_URL: 'https://github-readme-stats.vercel.app/api?username=gelbh&show_icons=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&hide_title=true',
+  STATS_SVG_PATH: 'stats-card.svg',
   INPUT_SVG: 'banner-with-stats.svg',
   OUTPUT_SVG: 'banner-composite.svg',
   OUTPUT_PNG: 'banner-composite.png',
@@ -146,6 +146,40 @@ async function fetchStatsWithRetry(url, retries = CONFIG.MAX_RETRIES) {
 }
 
 /**
+ * Loads GitHub stats SVG: workflow file, optional API, then cache
+ */
+async function loadStatsSvg() {
+  if (await fileExists(CONFIG.STATS_SVG_PATH)) {
+    const svg = await fs.readFile(CONFIG.STATS_SVG_PATH, 'utf-8');
+    console.log(`✓ Loaded stats from ${CONFIG.STATS_SVG_PATH} (workflow)`);
+    await saveStatsCache(svg);
+    return { svg, source: 'workflow' };
+  }
+
+  const apiUrl = process.env.STATS_API_URL;
+  if (apiUrl) {
+    try {
+      const svg = await fetchStatsWithRetry(apiUrl);
+      await saveStatsCache(svg);
+      console.log('✓ Loaded stats from API');
+      return { svg, source: 'api' };
+    } catch (error) {
+      console.warn(`⚠ Failed to fetch stats from API: ${error.message}`);
+    }
+  }
+
+  const cached = await getCachedStats();
+  if (cached) {
+    console.log('✓ Using cached stats as fallback');
+    return { svg: cached, source: 'cache' };
+  }
+
+  throw new Error(
+    `No stats available. Provide ${CONFIG.STATS_SVG_PATH}, set STATS_API_URL, or keep ${CONFIG.STATS_CACHE_FILE}.`
+  );
+}
+
+/**
  * Parses SVG to extract dimensions
  */
 function parseSvgDimensions(svgContent) {
@@ -168,8 +202,9 @@ function createCompositeSvg(baseSvg, statsSvg) {
   const statsBase64 = Buffer.from(statsSvg).toString('base64');
   const statsDataUri = `data:image/svg+xml;base64,${statsBase64}`;
 
+  const foreignObjectPattern = /<foreignObject[^>]*(?:\/>|>[\s\S]*?<\/foreignObject>)/;
   const compositeSvg = baseSvg.replace(
-    /<foreignObject[^>]*>[\s\S]*?<\/foreignObject>/,
+    foreignObjectPattern,
     `<image x="${CONFIG.STATS_POSITION.x}" y="${CONFIG.STATS_POSITION.y}" width="${dimensions.width}" height="${dimensions.height}" href="${statsDataUri}"/>`
   );
 
@@ -282,26 +317,9 @@ async function main() {
     const baseSvg = await fs.readFile(CONFIG.INPUT_SVG, 'utf-8');
     console.log('✓ Base SVG loaded');
 
-    // Fetch GitHub stats with retry logic and fallback
-    console.log('\nFetching GitHub stats...');
-    let statsSvg;
-    
-    try {
-      statsSvg = await fetchStatsWithRetry(CONFIG.STATS_API_URL);
-      // Save successful fetch to cache
-      await saveStatsCache(statsSvg);
-    } catch (error) {
-      console.warn(`\n⚠ Failed to fetch stats from API: ${error.message}`);
-      console.log('Attempting to use cached stats...');
-      
-      const cachedStats = await getCachedStats();
-      if (cachedStats) {
-        console.log('✓ Using cached stats as fallback');
-        statsSvg = cachedStats;
-      } else {
-        throw new Error('API fetch failed and no cached stats available. Cannot generate banner.');
-      }
-    }
+    console.log('\nLoading GitHub stats...');
+    const { svg: statsSvg, source } = await loadStatsSvg();
+    console.log(`Stats source: ${source}`);
 
     // Create composite SVG
     console.log('\nCreating composite SVG...');
@@ -342,4 +360,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { main };
+module.exports = { main, loadStatsSvg };
