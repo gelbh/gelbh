@@ -4,7 +4,8 @@
   "description": "Automated GitHub profile banner generator with stats",
   "main": "scripts/generate-banner.js",
   "scripts": {
-    "generate-banner": "node scripts/generate-banner.js"
+    "generate-banner": "node scripts/generate-banner.js",
+    "patch-stats-contribs": "node scripts/patch-all-time-contribs.js"
   },
   "keywords": [
     "github",
