@@ -61,13 +61,26 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit
 
+      - name: Verify STATS_PAT secret
+        run: |
+          if [ -z "${{ secrets.STATS_PAT }}" ]; then
+            echo "::error::Repository secret STATS_PAT is not set. Create a PAT with repo + read:user scopes and add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
       - name: Generate GitHub stats card
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: stats
           path: stats-card.svg
-          options: username=gelbh&show_icons=true&include_all_commits=true&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&hide_title=true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          options: username=gelbh&show_icons=true&include_all_commits=true&role=OWNER,ORGANIZATION_MEMBER,COLLABORATOR&theme=transparent&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=ffffff&icon_color=6366f1&hide_title=true
+          token: ${{ secrets.STATS_PAT }}
+
+      - name: Patch all-time contributed-to count
+        run: npm run patch-stats-contribs
+        env:
+          GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
+          GITHUB_USERNAME: gelbh
 
       - name: Generate composite banner
         run: npm run generate-banner
